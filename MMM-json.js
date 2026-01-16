@@ -108,7 +108,7 @@ Module.register("MMM-json", {
       var row = document.createElement("tr");
 
       var keyTd = document.createElement("td");
-	  keyTd.className = "small light bright";
+      keyTd.className = "small";
 
       if (this.response[i].icon) {
         var icon = document.createElement("i");
@@ -118,12 +118,12 @@ Module.register("MMM-json", {
 
       var titleSpan = document.createElement("span");
       if (this.response[i].title) {
-        titleSpan.className = "small regular bright";
+        titleSpan.className = "small";
         titleSpan.innerHTML =
           (this.response[i].title ? this.response[i].title : "") + ":";
       }
       keyTd.appendChild(titleSpan);
-	  row.appendChild(keyTd);
+      row.appendChild(keyTd);
 
       for (var j = 0; j < this.response[i].value.length; j++) {
         var dataTr = document.createElement("td");
@@ -171,12 +171,13 @@ Module.register("MMM-json", {
             }
           }
         }
-        dataTr.className = "small light bright";
+        dataTr.className = "medium bright align-right";
         row.appendChild(dataTr);
       }
 
       tb.appendChild(row);
     }
+
     wrapper.appendChild(tb);
     return wrapper;
   }
