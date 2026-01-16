@@ -105,6 +105,8 @@ Module.register("MMM-json", {
     }
 
     for (var i = 0; i < this.response.length; i++) {
+      if(this.response[i].field) { continue; } // Skip special fields
+
       var row = document.createElement("tr");
 
       var keyTd = document.createElement("td");
@@ -179,6 +181,25 @@ Module.register("MMM-json", {
     }
 
     wrapper.appendChild(tb);
+
+    const updatedResponses = this.response.filter(d=>d.field=="updated");
+    if(updatedResponses.length > 0) {
+      const lastUpdate = moment(updatedResponses[0].value[0]);
+      var updatedFormat;
+
+      if(moment() - lastUpdate > 6*60*60*1000) {
+        updatedFormat = "DD MMM HH:mm";
+      } else {
+        updatedFormat = "HH:mm";
+      }
+
+      const updatedRow = document.createElement("div");
+      updatedRow.classList.add("light");
+      updatedRow.classList.add("xsmall");
+      updatedRow.innerHTML = "Laatst bijgewerkt: " + lastUpdate.format(updatedFormat);
+      wrapper.appendChild(updatedRow);
+    }
+
     return wrapper;
   }
 });
