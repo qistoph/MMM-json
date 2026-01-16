@@ -3,6 +3,25 @@
 A Module for [MagicMirror](https://github.com/MichMich/MagicMirror) designed to
 display parts or the whole JSON response from an api.
 
+## Fork
+
+This is my customization fork which contains:
+
+- Some styling changes
+- A 'last updated' status field
+
+## Last updated info
+
+To show last updated info provide a `value` which has `field` set to **updated**.
+
+```
+{
+  'field': 'updated',
+  'query': '$.time',
+},
+```
+
+
 ## Preview
 
 ![alt text](https://github.com/DanielHabenicht/MMM-json/raw/main/sample.png "Example")
